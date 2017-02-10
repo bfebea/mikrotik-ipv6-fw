@@ -1,0 +1,9 @@
+/ipv6 firewall filter
+add action=accept chain=forward connection-state=established in-interface=pppoe-XYZ
+add action=accept chain=forward connection-state=related in-interface=pppoe-XYZ
+add action=accept chain=forward in-interface=pppoe-ovh protocol=icmpv6
+add action=drop chain=forward in-interface=pppoe-ovh log=yes log-prefix=FW-IPv6
+add action=accept chain=input in-interface=pppoe-ovh port=547 protocol=udp
+add action=accept chain=input in-interface=pppoe-ovh port=546 protocol=udp
+add action=accept chain=input in-interface=pppoe-ovh protocol=icmpv6
+add action=drop chain=input in-interface=pppoe-ovh log=yes log-prefix=FW-IPv6
